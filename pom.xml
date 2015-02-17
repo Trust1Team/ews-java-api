@@ -98,17 +98,6 @@
         <developerConnection>scm:git:ssh://git@github.com:OfficeDev/ews-java-api.git</developerConnection>
     </scm>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -152,16 +141,16 @@
     <build>
         <plugins>
             <!-- Deployment / build plugins -->
-            <plugin>
+<!--            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.5</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <!-- Ref.: http://books.sonatype.com/nexus-book/reference/staging-deployment.html -->
+                    &lt;!&ndash; Ref.: http://books.sonatype.com/nexus-book/reference/staging-deployment.html &ndash;&gt;
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -207,7 +196,7 @@
         <!-- Used to bump all of the various core plugins up to Maven current.
             Use this in conjunction with the versions-maven-plugin to keep your Maven
             plugins up to date. -->
-        <pluginManagement>
+<!--        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -215,21 +204,21 @@
                     <version>3.3</version>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        </pluginManagement>-->
     </build>
 
-    <reporting>
+<!--    <reporting>
         <plugins>
-            <!-- Basic report generation. -->
+            &lt;!&ndash; Basic report generation. &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>2.7</version>
             </plugin>
 
-            <!-- Dependency version reporting. Relies on standard version numbering
+            &lt;!&ndash; Dependency version reporting. Relies on standard version numbering
                 - you should use standard version numbering too!
-                http://mojo.codehaus.org/versions-maven-plugin/version-rules.html -->
+                http://mojo.codehaus.org/versions-maven-plugin/version-rules.html &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
@@ -245,7 +234,7 @@
                 </reportSets>
             </plugin>
 
-            <!-- Generates the Javadoc for the report. -->
+            &lt;!&ndash; Generates the Javadoc for the report. &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -256,7 +245,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Generates a nice HTML linked source cross-reference. -->
+            &lt;!&ndash; Generates a nice HTML linked source cross-reference. &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
@@ -276,5 +265,25 @@
                 </reportSets>
             </plugin>
         </plugins>
-    </reporting>
+    </reporting>-->
+
+    <!--Repositories -->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <url>http://oasis.t1t.be/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <!-- repository to deploy to -->
+    <distributionManagement>
+        <repository>
+            <id>Releases</id>
+            <url>http://oasis.t1t.be/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>Snapshots</id>
+            <url>http://oasis.t1t.be/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
